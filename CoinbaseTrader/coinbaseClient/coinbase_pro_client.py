@@ -27,17 +27,11 @@ def cbpro_public_client(func):
     return function_wrapper
 
 @cbpro_private_client
-def get_prices(private_client):
-    resp = private_client._send_message('get', '/oracle')
-    prices = resp['prices']
-    return prices
-
-@cbpro_private_client
-def get_product_ticker(private_client, currency):
-    ticker = private_client.get_product_ticker(f'{currency}-USD')
+def get_product_ticker_price(private_client, base_currency, quote_currency):
+    ticker = private_client.get_product_ticker(f'{base_currency}-{quote_currency}')
     if ticker == 'NotFound':
         ticker = None
-    return ticker
+    return float(ticker['price']) or 0.0
 
 @cbpro_public_client
 def get_products(public_client):

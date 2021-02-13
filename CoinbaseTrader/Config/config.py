@@ -3,7 +3,7 @@ CB_CREDENTIALS = {
 'PASSPHRASE': '',
 'SECRET': '',
 'KEY': '',
-'URL': ""
+'URL': ''
 }
 
 ENABLE_TRADING = False
