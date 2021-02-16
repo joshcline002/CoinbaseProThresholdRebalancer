@@ -35,5 +35,5 @@ jobs:
       #un: |
         #pytest
     - name: Install lambda dependencies
-    run: |
-      python deploy_linux.py
+      run: |
+        python deploy_linux.py
