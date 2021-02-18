@@ -1,5 +1,6 @@
+from decorators.utils import timeit
 
-
+@timeit
 def set_and_sort_crypto_change_vs_portfolio(cryptos, portfolio_value, quote_currency):
   max_change_vs_portfolio = 0
   quote_currency_amount = 0

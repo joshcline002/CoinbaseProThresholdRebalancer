@@ -3,15 +3,19 @@ from Config.config import REBALANCE_TARGET, REBALANCE_TOLERANCE, FEE_PERCENT, EN
 from Data.product import get_products_for_quote_currency_info
 from Data.account_format import format_account_and_get_portfolio_value
 from Data.change_vs_portfolio import set_and_sort_crypto_change_vs_portfolio
+
 import datetime
 
 
 def main(event="", context=""):
     print(f'--------START TIME {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}-----------')
     quote_currency = 'USD'
+
     products_to_quote_currency_info = get_products_for_quote_currency_info(quote_currency)
     accounts = get_accounts()
     cryptos, portfolio_value = format_account_and_get_portfolio_value(accounts, quote_currency, products_to_quote_currency_info)
+    del products_to_quote_currency_info
+    del accounts
     sorted_by_growth_cryptos, max_change_vs_portfolio, quote_currency_amount = set_and_sort_crypto_change_vs_portfolio(cryptos, portfolio_value, quote_currency)
     print('------------------STATS---------------------')
     print(f"Target Percent: {REBALANCE_TARGET}, Tolerance: {REBALANCE_TOLERANCE}, Portfolio Value: {portfolio_value}, Max Change: {max_change_vs_portfolio}, {quote_currency}: {quote_currency_amount}")
