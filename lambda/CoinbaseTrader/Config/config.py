@@ -1,8 +1,8 @@
 CB_CREDENTIALS = {
-'PASSPHRASE': '6wm4ld9si53', # 'pspdlxchhw',
-'SECRET': 'QjEbmbN8W9S/8gkTd8FR+fXFlyo4p1T4+CWrE4yt6CHyQLfW6LoBfzitj/lYEiAVxOsrSkJDMoNNlqGAKLYvwA==', # 'aHvakL9kJ8RbmIJU06BVAnS0/oLwgF+hmWiz6a71PgCxvDN6v4DHDe//6PpiB6AhM9FHXHvCL6xhidaMlZKW0Q==',
-'KEY': 'b585f4187010e8cea63648e591a665e3', # '840c5b0d3857414f7495172aca418095',
-'URL': "https://api-public.sandbox.pro.coinbase.com" # "https://api.pro.coinbase.com"
+'PASSPHRASE': '',
+'SECRET': '',
+'KEY': '',
+'URL': ""
 }
 
 ENABLE_TRADING = False
