@@ -1,21 +1,16 @@
 import os
-import shutil
 import subprocess
 import sys
 
-path = os.path.dirname(os.path.realpath(__file__))
-lambda_dir = 'CoinbaseTrader'
-print("Before copying file:")
-print(os.listdir(path))
 
-src = f'{path}/{lambda_dir}'
-dest = f'{path}/{lambda_dir}_deploy'
-destination = shutil.copytree(src, dest)
-print("After copying file:")
-print(os.listdir(path))
+def main():
+    path = os.path.dirname(os.path.realpath(__file__))
+    lambdas = f"{path}/lambda"
+    lambda_dirs = os.listdir(lambdas)
+    for dir in lambda_dirs:
+        destination = f'{lambdas}/{dir}'
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", f'{destination}/requirement.txt', f'--target={destination}'])
+    print("complete")
 
-print("Destination path:", destination)
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", f'{destination}/requirement.txt', f'--target={destination}'])
-
-shutil.rmtree(dest)
+main()
