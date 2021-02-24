@@ -1,9 +1,8 @@
 from coinbaseClient.coinbase_pro_client import get_products
 from decorators.utils import timeit
 
-@timeit
-def get_products_for_quote_currency_info(quote_currency):
-    products = get_products()
+def get_products_for_quote_currency_info(quote_currency, public_client):
+    products = get_products(public_client)
     products_to_quote_currency_info = {}
     for product in products:
         if product['quote_currency'] != quote_currency:
@@ -18,7 +17,7 @@ def get_products_for_quote_currency_info(quote_currency):
             }
     return products_to_quote_currency_info
 
-@timeit
+
 def get_precision_of_decimal(decimal_num):
     split_on_zero = decimal_num.split('.')
     get_numbers_after_decimal = split_on_zero[-1]
