@@ -3,12 +3,12 @@ from decorators.utils import timeit
 
 def generate_trade(crypto, quote_currency, portfolio_value, quote_currency_amount):
     if crypto["Crypto"] == quote_currency:
-        return None
+        return None, quote_currency_amount
     target_percent = crypto['TargetPercent']
     if  target_percent != 0:
         change_vs_portfolio = crypto['ChangeVsPortfolio']
         if not (abs(change_vs_portfolio) >= REBALANCE_TOLERANCE):
-            return None
+            return None, quote_currency_amount
         if change_vs_portfolio > 0:
             side = 'sell'
         else:
@@ -25,11 +25,11 @@ def generate_trade(crypto, quote_currency, portfolio_value, quote_currency_amoun
         shares = crypto['Balance']
         quote_amount_needed = crypto['MarketValue']
     if shares < crypto['base_min_size'] and side == 'sell':
-        return None
+        return None, quote_currency_amount
     elif side == 'sell':
         quote_currency_amount = quote_currency_amount + quote_amount_needed*(1-FEE_PERCENT/100)
     if quote_amount_needed < crypto['min_market_funds'] and side == 'buy':
-        return None
+        return None, quote_currency_amount
     elif side == 'buy':
         quote_currency_amount = quote_currency_amount - quote_amount_needed
     trade = {'type': 'market',
@@ -38,4 +38,4 @@ def generate_trade(crypto, quote_currency, portfolio_value, quote_currency_amoun
              'size': shares,
              'funds': quote_amount_needed
             }
-    return trade
+    return trade, quote_currency_amount

@@ -1,14 +1,27 @@
 CB_CREDENTIALS = {
-'PASSPHRASE': '',
-'SECRET': '',
-'KEY': '',
-'URL': ""
+'PASSPHRASE': 'pspdlxchhw',
+'SECRET': 'aHvakL9kJ8RbmIJU06BVAnS0/oLwgF+hmWiz6a71PgCxvDN6v4DHDe//6PpiB6AhM9FHXHvCL6xhidaMlZKW0Q==',
+'KEY': '840c5b0d3857414f7495172aca418095',
+'URL': "https://api.pro.coinbase.com"
 }
 
-ENABLE_TRADING = False
+ENABLE_TRADING = True
 
 TARGET_PERCENTS = {
-'USD': 50
+'BTC': 20,
+'ETH': 20,
+'AAVE': 5,
+'LINK': 5,
+'ALGO': 4,
+'GRT': 7,
+'NU': 6,
+'XLM': 6,
+'SNX': 6,
+'ATOM': 4,
+'REN': 5,
+'OXT': 5,
+'LRC': 5,
+'USD': 2
 }
 
 REBALANCE_TARGET = 15
