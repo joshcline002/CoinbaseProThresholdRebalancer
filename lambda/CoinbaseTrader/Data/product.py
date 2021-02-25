@@ -1,5 +1,5 @@
 from coinbaseClient.coinbase_pro_client import get_products
-from decorators.utils import timeit
+
 
 def get_products_for_quote_currency_info(quote_currency, public_client):
     products = get_products(public_client)
@@ -7,14 +7,15 @@ def get_products_for_quote_currency_info(quote_currency, public_client):
     for product in products:
         if product['quote_currency'] != quote_currency:
             continue
-        products_to_quote_currency_info[product['base_currency']] ={
-                'base_min_size': float(product['base_min_size']),
-                'base_max_size': float(product['base_max_size']),
-                'min_market_funds': float(product['min_market_funds']),
-                'max_market_funds': float(product['max_market_funds']),
-                f'{quote_currency}_round_to_digit': get_precision_of_decimal(product['quote_increment']),
-                'shares_round_to_digit': get_precision_of_decimal(product['base_increment'])
-            }
+        products_to_quote_currency_info[product['base_currency']] = {
+            'base_min_size': float(product['base_min_size']),
+            'base_max_size': float(product['base_max_size']),
+            'min_market_funds': float(product['min_market_funds']),
+            'max_market_funds': float(product['max_market_funds']),
+            f'{quote_currency}_round_to_digit': get_precision_of_decimal(
+                product['quote_increment']),
+            'shares_round_to_digit': get_precision_of_decimal(product['base_increment'])
+        }
     return products_to_quote_currency_info
 
 
