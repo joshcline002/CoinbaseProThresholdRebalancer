@@ -20,6 +20,8 @@ def get_products_for_quote_currency_info(quote_currency, public_client):
 
 
 def get_precision_of_decimal(decimal_num):
+    if '.' not in decimal_num:
+        return 0
     split_on_zero = decimal_num.split('.')
     get_numbers_after_decimal = split_on_zero[-1]
     removed_trailing_zeros = get_numbers_after_decimal.rstrip('0')
