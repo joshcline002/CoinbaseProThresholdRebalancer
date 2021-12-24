@@ -1,10 +1,10 @@
 import sys
 from unittest.mock import MagicMock
 
-from Data import product
-
 sys.modules['coinbaseClient'] = MagicMock()
 sys.modules['coinbaseClient.coinbase_pro_client'] = MagicMock()
+
+from Data import product
 
 
 def test_get_precision_of_decimal_float():
