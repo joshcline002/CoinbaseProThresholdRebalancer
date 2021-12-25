@@ -1,4 +1,4 @@
-from coinbaseClient.coinbase_pro_client import get_products
+from coinbase_client.my_coinbase_pro_client import get_products
 
 
 def get_products_for_quote_currency_info(quote_currency, public_client):

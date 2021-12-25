@@ -1,6 +1,6 @@
-from Config.config import TARGET_PERCENTS, CRYPTO_EXCLUDE_FROM_TRADING, \
+from trader_config.config import TARGET_PERCENTS, CRYPTO_EXCLUDE_FROM_TRADING, \
     IGNORE_MARKET_VALUE_LESS_THAN
-from coinbaseClient.coinbase_pro_client import get_product_ticker_price
+from coinbase_client.my_coinbase_pro_client import get_product_ticker_price
 
 
 def format_account_and_get_portfolio_value(accounts, quote_currency,
