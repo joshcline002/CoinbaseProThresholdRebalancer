@@ -2,8 +2,9 @@ import sys
 from unittest.mock import MagicMock
 
 sys.modules['coinbase_client'] = MagicMock()
-sys.modules['coinbase_client.coinbase_pro_client'] = MagicMock()
+sys.modules['coinbase_client.my_coinbase_pro_client'] = MagicMock()
 
+# pylint: disable-next=import-error, wrong-import-position
 from data import product
 
 
