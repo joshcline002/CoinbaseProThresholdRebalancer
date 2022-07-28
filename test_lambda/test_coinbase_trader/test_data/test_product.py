@@ -1,6 +1,7 @@
 """Unit Tests for the product functionality"""
 import sys
 from unittest.mock import MagicMock
+import pytest
 
 sys.modules['coinbase_client'] = MagicMock()
 sys.modules['coinbase_client.my_coinbase_pro_client'] = MagicMock()
@@ -53,7 +54,8 @@ def test_get_products_for_quote_currency_info():
          'quote_increment': '.00100',
          'base_increment': '.00000100000'
          }]
-
+    stash_get_products = product.get_products()
+    stash_get_precision_of_decimal = product.get_precision_of_decimal
     product.get_products = MagicMock(return_value=products)
     product.get_precision_of_decimal = MagicMock(return_value="Test_Precision")
     actual_products = product.get_products_for_quote_currency_info('USD', 'Public_Client')
@@ -76,3 +78,7 @@ def test_get_products_for_quote_currency_info():
                          }
     assert actual_products == expected_products
     product.get_products.assert_called_once_with('Public_Client')
+    stash_get_products = product.get_products()
+    stash_get_precision_of_decimal = product.get_precision_of_decimal
+    product.get_products = stash_get_products
+    product.get_precision_of_decimal = stash_get_precision_of_decimal
