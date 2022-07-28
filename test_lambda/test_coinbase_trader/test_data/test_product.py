@@ -6,7 +6,7 @@ sys.modules['coinbase_client'] = MagicMock()
 sys.modules['coinbase_client.my_coinbase_pro_client'] = MagicMock()
 
 # pylint: disable-next=import-error, wrong-import-position
-from lambdas.coinbase_trader.data import product
+from CoinbaseProThresholdRebalancer.lambdas.coinbase_trader.data import product
 
 
 def test_get_precision_of_decimal_float():
