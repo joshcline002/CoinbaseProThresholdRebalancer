@@ -1,3 +1,4 @@
+# pylint: disable-next=import-error,
 from coinbase_client.my_coinbase_pro_client import get_products
 
 

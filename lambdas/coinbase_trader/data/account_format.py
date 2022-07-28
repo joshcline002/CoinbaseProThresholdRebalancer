@@ -1,6 +1,7 @@
+# pylint: disable=import-error
+from coinbase_client.my_coinbase_pro_client import get_product_ticker_price
 from trader_config.config import TARGET_PERCENTS, CRYPTO_EXCLUDE_FROM_TRADING, \
     IGNORE_MARKET_VALUE_LESS_THAN
-from coinbase_client.my_coinbase_pro_client import get_product_ticker_price
 
 
 def format_account_and_get_portfolio_value(accounts, quote_currency,
@@ -34,6 +35,7 @@ def ignore_currency(currency, balance, account):
     return not_in_target_and_zero_balance or trading_not_enabled or exclude_crypto
 
 
+# pylint: disable-next=too-many-arguments
 def format_crypto(currency, balance, price, market_value, product_info, quote_currency):
     formatted_crypto = {
         'Crypto': currency,

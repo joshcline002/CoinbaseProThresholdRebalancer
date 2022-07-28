@@ -1,3 +1,4 @@
+"""Unit Tests for the product functionality"""
 import sys
 from unittest.mock import MagicMock
 
@@ -5,22 +6,25 @@ sys.modules['coinbase_client'] = MagicMock()
 sys.modules['coinbase_client.my_coinbase_pro_client'] = MagicMock()
 
 # pylint: disable-next=import-error, wrong-import-position
-from data import product
+from lambdas.coinbase_trader.data import product
 
 
 def test_get_precision_of_decimal_float():
+    """test precision works for decimals for float"""
     actual_precision = product.get_precision_of_decimal("1.99")
     expected_precision = 2
     assert actual_precision == expected_precision
 
 
 def test_get_precision_of_decimal_int():
+    """test precision works for decimals for integer"""
     actual_precision = product.get_precision_of_decimal("1")
     expected_precision = 0
     assert actual_precision == expected_precision
 
 
 def test_get_products_for_quote_currency_info():
+    """test get product for quote currency info works."""
     products = [
         {'quote_currency': 'USD',
          'base_currency': 'BTC',

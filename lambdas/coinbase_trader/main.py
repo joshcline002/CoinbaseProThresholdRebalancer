@@ -1,17 +1,19 @@
 import datetime
 
-from coinbase_client.my_coinbase_pro_client import get_accounts, get_private_client, \
-    get_public_client
-from trader_config.config import TARGET_PERCENTS, CB_CREDENTIALS, REBALANCED_TARGET,\
-    REBALANCED_TOLERANCE
-from data.product import get_products_for_quote_currency_info
-from data.account_format import format_account_and_get_portfolio_value
-from data.change_vs_portfolio import set_and_sort_crypto_change_vs_portfolio
+# pylint: disable=import-error
 from Trades.execute_trades import handle_trades
 from Trades.generate_trades import generate_trade
+from coinbase_client.my_coinbase_pro_client import get_accounts, get_private_client, \
+    get_public_client
+from data.account_format import format_account_and_get_portfolio_value
+from data.change_vs_portfolio import set_and_sort_crypto_change_vs_portfolio
+from data.product import get_products_for_quote_currency_info
+from trader_config.config import TARGET_PERCENTS, CB_CREDENTIALS, REBALANCED_TARGET, \
+    REBALANCED_TOLERANCE
 
 
-def main(event="", context=""):
+# pylint: disable-next=too-many-locals
+def main(_event="", _context=""):
     private_client = get_private_client(CB_CREDENTIALS)
     public_client = get_public_client(CB_CREDENTIALS['URL'])
     print(f'--------START TIME {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}-----------')
@@ -62,6 +64,7 @@ def main(event="", context=""):
     print(f'--------END TIME {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}-----------')
 
 
+# pylint: disable-next=too-many-arguments
 def get_buy_and_sell_trades(buy_trades, crypto, max_change_vs_portfolio,
                             portfolio_value, quote_currency,
                             quote_currency_amount, sell_trades):
